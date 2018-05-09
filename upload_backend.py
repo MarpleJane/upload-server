@@ -13,6 +13,9 @@ PIC_STORE_PATH = "/home/pi/Receives/pictures/img"
 
 
 class UploadHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+
     def post(self):
         file_name = self.get_argument("file_name")
         logging.warn("File name: %s", file_name)
